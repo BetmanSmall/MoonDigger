@@ -1,5 +1,3 @@
-using UnityEngine;
-using System.Collections;
 namespace _Game.Scripts.Grid3d {
     public struct Point {
         public int X { get; private set; }

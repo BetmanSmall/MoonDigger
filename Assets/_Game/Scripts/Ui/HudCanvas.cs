@@ -2,13 +2,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 namespace _Game.Scripts.Ui {
-    public class UiCanvas : MonoBehaviour {
-        public Image gemImage;
+    public class HudCanvas : MonoBehaviour {
+        [SerializeField] private Image gemImage;
+        public Vector3 GetImagePos => gemImage.transform.position;
         [SerializeField] private TMP_Text gemCollectCountTMPText;
         private int _gemCollectCount;
 
-        public static UiCanvas instance;
-
+        public static HudCanvas instance;
         private void Start() {
             instance = this;
             Canvas canvas = GetComponent<Canvas>();

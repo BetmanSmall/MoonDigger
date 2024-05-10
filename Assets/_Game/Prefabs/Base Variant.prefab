@@ -76,6 +76,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2930244363436755403}
+    - targetCorrespondingSourceObject: {fileID: 863330603906094049, guid: d3be3902f0af21d40b381cd77208daa0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8401097631864983769}
+    - targetCorrespondingSourceObject: {fileID: 863330603906094049, guid: d3be3902f0af21d40b381cd77208daa0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2988147488136245197}
   m_SourcePrefab: {fileID: 100100000, guid: d3be3902f0af21d40b381cd77208daa0, type: 3}
 --- !u!1 &3318614232181221918 stripped
 GameObject:
@@ -101,4 +109,37 @@ MonoBehaviour:
   - {fileID: 8307322894754887973, guid: 53168ceb81c92934d9d8edab7fef6d9e, type: 3}
   - {fileID: 439726086457075563, guid: 9de82d5e406d9d544ac387c521e08a2f, type: 3}
   - {fileID: 3761745242275073796, guid: 305a388b6539d3041a283b76508de030, type: 3}
-  percent: 0.9
+  percent: 0.8
+--- !u!114 &8401097631864983769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3318614232181221918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0a1c1ffdbe4086ad7fb17d9ba96c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bonusPercent: 10
+  debonusPercent: 7.5
+  halfPercent: 50
+  bonusGemCount: 5
+  bonusTimeCount: 5
+  debonusTimeCount: -5
+  debonusClickToDestroy: 2
+--- !u!114 &2988147488136245197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3318614232181221918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25538934150c48b3ab0ee4e9f5c4908c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gemGetter: {fileID: 2930244363436755403}
+  bonusDebonusGetter: {fileID: 8401097631864983769}

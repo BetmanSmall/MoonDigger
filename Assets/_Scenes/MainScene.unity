@@ -2637,6 +2637,8 @@ MonoBehaviour:
     cellCount: 6
     cellDistance: 6
   prefab: {fileID: 3318614232181221918, guid: 8e14298b63b94f6ff921268b307bb852, type: 3}
+  gemGetPercent: 15
+  timeForLevel: 150
 --- !u!4 &432134197
 Transform:
   m_ObjectHideFlags: 0
@@ -12183,8 +12185,10 @@ GameObject:
   - component: {fileID: 1604137344}
   - component: {fileID: 1604137343}
   - component: {fileID: 1604137347}
+  - component: {fileID: 1604137348}
+  - component: {fileID: 1604137349}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: HudCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12287,6 +12291,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gemImage: {fileID: 1451411233}
   gemCollectCountTMPText: {fileID: 1185905465}
+--- !u!114 &1604137348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604137342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e70a41cfcc437bab037695e685d12d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerImage: {fileID: 501062829}
+  timerTMP: {fileID: 1971220291}
+  timerTime: 100
+--- !u!114 &1604137349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604137342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 237cb62b5a7d4bea956a35f2233ee1e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToRevert: 10
 --- !u!1001 &1607585393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13079,7 +13111,7 @@ GameObject:
   - component: {fileID: 1789743821}
   - component: {fileID: 1789743820}
   m_Layer: 5
-  m_Name: TimePanel
+  m_Name: TimerPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13945,7 +13977,7 @@ GameObject:
   - component: {fileID: 1971220292}
   - component: {fileID: 1971220291}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TimerTMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
