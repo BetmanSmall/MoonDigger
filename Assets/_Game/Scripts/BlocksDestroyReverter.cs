@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using _Game.Scripts.Blocks;
+using _Game.Scripts.Ui;
 using UnityEngine;
 namespace _Game.Scripts {
     public class BlocksDestroyReverter : MonoBehaviour {
@@ -25,6 +26,7 @@ namespace _Game.Scripts {
                 foreach (BlockDestroyer blockDestroyer in instance._blockDestroyers) {
                     blockDestroyer.SetClickToDestroy(value);
                 }
+                HudCanvas.instance.ToggleBlockLopataImage(true);
                 instance.Invoke(nameof(ChangeBackClickToDestroy), instance.timeToRevert);
             }
         }
@@ -34,6 +36,7 @@ namespace _Game.Scripts {
             foreach (BlockDestroyer blockDestroyer in instance._blockDestroyers) {
                 blockDestroyer.SetClickToDestroy(1);
             }
+            HudCanvas.instance.ToggleBlockLopataImage(false);
         }
     }
 }
