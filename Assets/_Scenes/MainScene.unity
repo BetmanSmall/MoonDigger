@@ -6138,7 +6138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 237cb62b5a7d4bea956a35f2233ee1e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToRevert: 10
+  timeToRevert: 5
 --- !u!1001 &331479611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8781,6 +8781,7 @@ MonoBehaviour:
   debonusPercent: 5
   timeForLevel: 180
   cameraTarget: {fileID: 18810235}
+  activeBlocksCount: 0
 --- !u!4 &432134197
 Transform:
   m_ObjectHideFlags: 0
@@ -12737,6 +12738,7 @@ MonoBehaviour:
   debonusPercent: 6
   timeForLevel: 135
   cameraTarget: {fileID: 1229370837}
+  activeBlocksCount: 0
 --- !u!1 &657593661 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 114420, guid: bbcafc121fde4c040b53d86eb55aec3b,
