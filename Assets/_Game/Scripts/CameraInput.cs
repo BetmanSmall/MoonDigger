@@ -1,4 +1,5 @@
 using _Game.Scripts.Blocks;
+using _Game.Scripts.Ui;
 using UnityEngine;
 namespace _Game.Scripts {
     public class CameraInput : MonoBehaviour {
@@ -17,7 +18,9 @@ namespace _Game.Scripts {
                     // Debug.Log("CameraInput::Update(); -- hit.collider:" + hit.collider);
                     if (hit.collider) {
                         if (hit.collider.gameObject.TryGetComponent(out BlockDestroyer blockDestroyer)) {
-                            blockDestroyer.BlockDestroy();
+                            if (HudGameTimer.instance.TimerStarted) {
+                                blockDestroyer.BlockDestroy();
+                            }
                         }
                     }
                 }
