@@ -19,9 +19,5 @@ namespace _Game.Scripts.Grid3d {
             GetActive = active;
             Entry.SetActive(active);
         }
-
-        public void UpdateOffset(Vector3 position) {
-            // must first calculate the relative move since there won't be any reference to the parent grid
-        }
     }
 }

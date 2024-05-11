@@ -33,6 +33,11 @@ namespace _Game.Scripts.CameraControl {
         [SerializeField] private float zoomSpeedTouch = 0.5f;
 
         private void Start() {
+            SetTarget(target);
+        }
+
+        public void SetTarget(Transform target) {
+            this.target = target;
             _cameraOffset = transform.position - target.position;
             transform.LookAt(target);
         }

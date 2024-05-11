@@ -10,6 +10,7 @@ namespace _Game.Scripts.Ui {
 
         public static HudGameTimer instance;
         private void Start() {
+            Debug.Log("HudGameTimer::Start(); -- time:" + Time.time);
             instance = this;
         }
 
@@ -18,6 +19,8 @@ namespace _Game.Scripts.Ui {
             if (timerTime <= 0f) {
                 // todo lose canvas
                 Debug.Log("lose");
+                GameOverCanvas.instance.ShowLosePanel();
+                enabled = false;
             }
             timerTMP.text = timerTime.ToString("F1");
         }
