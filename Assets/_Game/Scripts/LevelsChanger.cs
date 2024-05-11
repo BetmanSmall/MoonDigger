@@ -64,6 +64,7 @@ namespace _Game.Scripts {
         }
 
         public void EnterTimeLineToLevel(int index) {
+            hudGameTimer.TimerStarted = false;
             hudGameTimer.gameObject.SetActive(false);
             cinemachineBrain.enabled = true;
             playableDirectors[index].Play();

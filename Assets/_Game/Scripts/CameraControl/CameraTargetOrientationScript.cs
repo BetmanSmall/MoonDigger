@@ -23,8 +23,10 @@ namespace _Game.Scripts.CameraControl {
         [Header("Mouse control fields")]
         [Space(2)] [Header("Mouse Controls")] [SerializeField] private float rotationSpeedMouse = 5;
         [SerializeField] private float zoomSpeedMouse = 10;
-        [SerializeField] private float zoomMouseMin = 3;
-        [SerializeField] private float zoomMouseMax = 9;
+        [SerializeField] private float defaultZoomMouseMin = 3;
+        [SerializeField] private float defaultZoomMouseMax = 15;
+        private float _zoomMouseMin = 3;
+        private float _zoomMouseMax = 15;
         private float _zoomAmountMouse = 0;
         private float _maxToClampMouse = 10;
 
@@ -42,6 +44,8 @@ namespace _Game.Scripts.CameraControl {
             this.target = target;
             _defaultPosition = transform.position;
             _cameraOffset = transform.position - target.position;
+            _zoomMouseMin = target.position.y + defaultZoomMouseMin;
+            _zoomMouseMax = target.position.y + defaultZoomMouseMax;
             transform.LookAt(target);
         }
 
@@ -71,7 +75,7 @@ namespace _Game.Scripts.CameraControl {
                 // Translating camera on PC with mouse wheel.
 #if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBPLAYER
                 float mouseScrollWheel = Input.GetAxis("Mouse ScrollWheel");
-                if ((mouseScrollWheel > 0 && transform.position.y > zoomMouseMin) || (mouseScrollWheel < 0 && transform.position.y < zoomMouseMax)) {
+                if ((mouseScrollWheel > 0 && transform.position.y > _zoomMouseMin) || (mouseScrollWheel < 0 && transform.position.y < _zoomMouseMax)) {
                     _zoomAmountMouse += mouseScrollWheel;
                     _zoomAmountMouse = Mathf.Clamp(_zoomAmountMouse, -_maxToClampMouse, _maxToClampMouse);
                     var translate = Mathf.Min(Mathf.Abs(mouseScrollWheel), _maxToClampMouse - Mathf.Abs(_zoomAmountMouse));

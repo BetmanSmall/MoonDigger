@@ -8325,8 +8325,8 @@ MonoBehaviour:
   target: {fileID: 18810236}
   rotationSpeedMouse: 5
   zoomSpeedMouse: 10
-  zoomMouseMin: 3
-  zoomMouseMax: 15
+  defaultZoomMouseMin: 3
+  defaultZoomMouseMax: 15
   rotationSpeedTouch: 5
   zoomSpeedTouch: 0.5
 --- !u!114 &330585550
@@ -11642,8 +11642,8 @@ MonoBehaviour:
     cellCount: 6
     cellDistance: 6
   width:
-    cellCount: 10
-    cellDistance: 10
+    cellCount: 1
+    cellDistance: 1
   height:
     cellCount: 6
     cellDistance: 6
@@ -16949,8 +16949,8 @@ MonoBehaviour:
     cellCount: 6
     cellDistance: 6
   width:
-    cellCount: 10
-    cellDistance: 10
+    cellCount: 2
+    cellDistance: 2
   height:
     cellCount: 6
     cellDistance: 6
@@ -29379,7 +29379,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -51794,8 +51794,8 @@ MonoBehaviour:
     cellCount: 6
     cellDistance: 6
   width:
-    cellCount: 10
-    cellDistance: 10
+    cellCount: 3
+    cellDistance: 3
   height:
     cellCount: 6
     cellDistance: 6
