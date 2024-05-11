@@ -1,6 +1,7 @@
 using _Game.Scripts.Blocks;
 using _Game.Scripts.Ui;
 using UnityEngine;
+using UnityEngine.Serialization;
 namespace _Game.Scripts.Grid3d {
     public class Grid3d : MonoBehaviour, IGrid {
         [SerializeField] private GridDimension length; //x
@@ -23,15 +24,14 @@ namespace _Game.Scripts.Grid3d {
 
         [SerializeField] private GameObject prefab;
         [SerializeField] private float gemGetPercent = 15f;
-        // [SerializeField] private float bonusPercent = 10f;
-        // [SerializeField] private float debonusPercent = 7.5f;
+        [SerializeField] private float bonusPercent = 10f;
+        [SerializeField] private float debonusPercent = 7.5f;
         [SerializeField] private float timeForLevel = 150f;
-        public static int ActiveBlocksCount { get; set; }
         [SerializeField] public GameObject cameraTarget;
 
         private void Start() {
             Debug.Log("Grid3d::Start(); -- time:" + Time.time);
-            ActiveBlocksCount = 0;
+            // ActiveBlocksCount = 0;
             for (int x = 0; x < length.CellCount; x++) {
                 for (int y = 0; y < width.CellCount; y++) {
                     for (int z = 0; z < height.CellCount; z++) {
@@ -40,10 +40,10 @@ namespace _Game.Scripts.Grid3d {
                         if (newObject.TryGetComponent(out GemGetter gemGetter)) {
                             gemGetter.SetPercent(gemGetPercent);
                         }
-                        // if (newObject.TryGetComponent(out BonusDebonusGetter bonusDebonusGetter)) {
-                        //     bonusDebonusGetter.bonusPercent = bonusPercent;
-                        //     bonusDebonusGetter.debonusPercent = debonusPercent;
-                        // }
+                        if (newObject.TryGetComponent(out BonusDebonusGetter bonusDebonusGetter)) {
+                            bonusDebonusGetter.bonusPercent = bonusPercent;
+                            bonusDebonusGetter.debonusPercent = debonusPercent;
+                        }
                         SetObject(point, newObject);
                     }
                 }
@@ -52,11 +52,24 @@ namespace _Game.Scripts.Grid3d {
 
         private void OnEnable() {
             Debug.Log("Grid3d::OnEnable(); -- time:" + Time.time);
-            ActiveBlocksCount = 0;
+            // ActiveBlocksCount = 0;
         }
 
+        public int activeBlocksCount;
+        private static Grid3d _activeGrid;
         public void SetTimeForLevel() {
             HudGameTimer.instance.SetTimerTime(timeForLevel);
+            _activeGrid = this;
+        }
+
+        public static bool BlockDestroyAndNowEmpty() {
+            if (_activeGrid) {
+                _activeGrid.activeBlocksCount--;
+                if (_activeGrid.activeBlocksCount <= 0) {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void SetObject(Point coordinate, GameObject gObject) {
@@ -65,7 +78,7 @@ namespace _Game.Scripts.Grid3d {
             entry.Wrapper.transform.SetParent(transform);
             entry.Wrapper.transform.localPosition = calcPosition(coordinate);
             grid[coordinate.X, coordinate.Y, coordinate.Z] = entry;
-            ActiveBlocksCount++;
+            activeBlocksCount++;
         }
 
         private Vector3 calcPosition(Point coordinate) {

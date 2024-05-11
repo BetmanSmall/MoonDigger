@@ -25,8 +25,7 @@ namespace _Game.Scripts.Blocks {
                 if (!gemGetter.TryGetGem()) {
                     bonusDebonusGetter.RollBonusAndDebonus(gemGetter);
                 }
-                Grid3d.Grid3d.ActiveBlocksCount--;
-                if (Grid3d.Grid3d.ActiveBlocksCount <= 0) {
+                if (Grid3d.Grid3d.BlockDestroyAndNowEmpty()) {
                     LevelsChanger.ChangeLevelStatic();
                 }
             }

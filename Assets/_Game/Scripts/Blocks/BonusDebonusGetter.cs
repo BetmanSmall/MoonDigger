@@ -2,8 +2,8 @@ using _Game.Scripts.Ui;
 using UnityEngine;
 namespace _Game.Scripts.Blocks {
     public class BonusDebonusGetter : MonoBehaviour {
-        [SerializeField] private float bonusPercent = 10f;
-        [SerializeField] private float debonusPercent = 7.5f;
+        [SerializeField] public float bonusPercent = 10f;
+        [SerializeField] public float debonusPercent = 7.5f;
         [SerializeField] private float halfPercent = 50f;
         [SerializeField] private int bonusGemCount = 5;
         [SerializeField] private float bonusTimeCount = 5f;

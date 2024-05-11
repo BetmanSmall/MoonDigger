@@ -32,12 +32,15 @@ namespace _Game.Scripts.CameraControl {
         [Space(2)] [Header("Touch Controls")] [SerializeField] private float rotationSpeedTouch = 5;
         [SerializeField] private float zoomSpeedTouch = 0.5f;
 
+        private Vector3 _defaultPosition;
+
         private void Start() {
             SetTarget(target);
         }
 
         public void SetTarget(Transform target) {
             this.target = target;
+            _defaultPosition = transform.position;
             _cameraOffset = transform.position - target.position;
             transform.LookAt(target);
         }
@@ -96,6 +99,10 @@ namespace _Game.Scripts.CameraControl {
                 this.GetComponent<Camera>().fieldOfView = Mathf.Clamp(this.GetComponent<Camera>().fieldOfView, 0.1f, 179.9f);
             }
 #endif
+            }
+            if (transform.position.y <= 0) {
+                transform.position = _defaultPosition;
+                transform.LookAt(target);
             }
         }
     }

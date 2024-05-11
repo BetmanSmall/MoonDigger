@@ -16,6 +16,7 @@ namespace _Game.Scripts {
         // [SerializeField] private PlayableDirector playableDirector3;
         // [SerializeField] private int _levelCount = 3;
         [SerializeField] private int _levelIndex = 0;
+        private Grid3d.Grid3d currentGrid;
 
         private static LevelsChanger instance;
         private void Start() {
@@ -66,6 +67,8 @@ namespace _Game.Scripts {
             hudGameTimer.gameObject.SetActive(false);
             cinemachineBrain.enabled = true;
             playableDirectors[index].Play();
+            currentGrid = playableDirectors[index].GetComponentInChildren<Grid3d.Grid3d>(true);
+            currentGrid.gameObject.SetActive(true);
         }
 
         public void StartLevel() {
@@ -73,11 +76,10 @@ namespace _Game.Scripts {
         }
 
         public void StartLevel(int index) {
-            Grid3d.Grid3d grid3d = playableDirectors[index].GetComponentInChildren<Grid3d.Grid3d>();
-            grid3d.SetTimeForLevel();
+            currentGrid.SetTimeForLevel();
             hudGameTimer.gameObject.SetActive(true);
             cinemachineBrain.enabled = false;
-            cameraTargetOrientation.SetTarget(grid3d.cameraTarget.transform);
+            cameraTargetOrientation.SetTarget(currentGrid.cameraTarget.transform);
             _levelIndex = index+1;
         }
 
