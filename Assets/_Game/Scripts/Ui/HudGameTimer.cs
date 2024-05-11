@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -6,23 +7,26 @@ namespace _Game.Scripts.Ui {
     public class HudGameTimer : MonoBehaviour {
         [SerializeField] private Image timerImage;
         [SerializeField] private TMP_Text timerTMP;
-        [SerializeField] float timerTime = 100f;
+        [SerializeField] private float timerTime = 100f;
+        public bool TimerStarted { get; set; }
+        [SerializeField] private GameObject areYouReadyPanel;
 
         public static HudGameTimer instance;
         private void Start() {
             Debug.Log("HudGameTimer::Start(); -- time:" + Time.time);
             instance = this;
+            gameObject.SetActive(false);
         }
 
         private void Update() {
-            timerTime -= Time.deltaTime;
-            if (timerTime <= 0f) {
-                // todo lose canvas
-                Debug.Log("lose");
-                GameOverCanvas.instance.ShowLosePanel();
-                enabled = false;
+            if (TimerStarted) {
+                timerTime -= Time.deltaTime;
+                if (timerTime <= 0f) {
+                    GameOverCanvas.instance.ShowLosePanel();
+                    enabled = false;
+                }
+                timerTMP.text = timerTime.ToString("F1");
             }
-            timerTMP.text = timerTime.ToString("F1");
         }
 
         public void IncreaseOrDecreaseTime(float value) {
@@ -35,6 +39,12 @@ namespace _Game.Scripts.Ui {
 
         public void SetTimerTime(float value) {
             timerTime = value;
+        }
+
+        private void OnEnable() {
+            Debug.Log("HudGameTimer::OnEnable(); -- TimerStarted:" + TimerStarted);
+            TimerStarted = false;
+            areYouReadyPanel.SetActive(true);
         }
     }
 }

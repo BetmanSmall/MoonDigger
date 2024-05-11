@@ -15,12 +15,12 @@ namespace _Game.Scripts.Ui {
 
         public void ShowLosePanel() {
             losePanel.SetActive(true);
-            AudioSource.PlayClipAtPoint(loseAudioClip, Vector3.zero);
+            AudioManager.PlayAudioClip(loseAudioClip);
         }
 
         public void ShowWinPanel() {
             winPanel.SetActive(true);
-            AudioSource.PlayClipAtPoint(winAudioClip, Vector3.zero);
+            AudioManager.PlayAudioClip(winAudioClip);
         }
 
         public void Reset() {

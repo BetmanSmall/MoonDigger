@@ -16,6 +16,7 @@ namespace _Game.Scripts.Blocks {
         public bool TryGetGem() {
             if (Random.Range(0f, 100f) <= _percent) {
                 SpawnGemToUser();
+                AudioManager.PlayRandomGems();
                 return true;
             }
             return false;

@@ -27,6 +27,7 @@ namespace _Game.Scripts.Grid3d {
         // [SerializeField] private float debonusPercent = 7.5f;
         [SerializeField] private float timeForLevel = 150f;
         public static int ActiveBlocksCount { get; set; }
+        [SerializeField] public GameObject cameraTarget;
 
         private void Start() {
             Debug.Log("Grid3d::Start(); -- time:" + Time.time);
@@ -52,7 +53,10 @@ namespace _Game.Scripts.Grid3d {
         private void OnEnable() {
             Debug.Log("Grid3d::OnEnable(); -- time:" + Time.time);
             ActiveBlocksCount = 0;
-            // HudGameTimer.instance.SetTimerTime(timeForLevel);
+        }
+
+        public void SetTimeForLevel() {
+            HudGameTimer.instance.SetTimerTime(timeForLevel);
         }
 
         public void SetObject(Point coordinate, GameObject gObject) {

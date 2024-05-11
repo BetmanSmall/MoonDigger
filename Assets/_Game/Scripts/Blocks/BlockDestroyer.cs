@@ -19,6 +19,7 @@ namespace _Game.Scripts.Blocks {
 
         public void BlockDestroy() {
             _clickToDestroy--;
+            AudioManager.PlayRandomDigs();
             if (_clickToDestroy == 0) {
                 gameObject.SetActive(false);
                 if (!gemGetter.TryGetGem()) {
@@ -26,7 +27,7 @@ namespace _Game.Scripts.Blocks {
                 }
                 Grid3d.Grid3d.ActiveBlocksCount--;
                 if (Grid3d.Grid3d.ActiveBlocksCount <= 0) {
-                    // LevelsChanger
+                    LevelsChanger.ChangeLevelStatic();
                 }
             }
         }
